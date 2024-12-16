@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -23,8 +24,10 @@ public class ProductController {
 
     @GetMapping("/create")
     public String createProduct(Model model) {
-        model.addAttribute("newProduct", new Products()); // Ensure this line is correct
+        model.addAttribute("newProduct", new Products()); //binding Products Entity object in view template
         return "product/create"; // Make sure this path matches the file location
     }
+
+
 
 }

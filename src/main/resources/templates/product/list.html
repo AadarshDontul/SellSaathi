@@ -2,42 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Product List</title>
+    <title>SellSaathi - Product List</title>
+    <link th:href="@{/list.css}" rel="stylesheet" />
 </head>
 <body>
-    <h1>Product List</h1>
-    <a href="/products/create">Create new Product</a>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Qty</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="product : ${products}">
-                <td th:text="${product.id}"></td>
-                <td th:text="${product.name}"></td>
-                <td th:text="${product.description}"></td>
-                <td th:text="${product.price}"></td>
-                <td th:text="${product.quantity}"></td>
-                <td>
-                    <img th:src="${product.images != null ? '/product/image/'+ product.id : '' }" width="100">
-                </td>
-                <td>
-                    <a href="#">Edit</a>
-                    <a href="#">Delete</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<!-- Navbar -->
+<nav class="navbar">
+    <a href="/" class="navbar-brand">
+        <span class="logo">SellSaathi</span>
+    </a>
+    <div class="navbar-actions">
+        <a href="/products/create" class="create-product-btn">Create New Product</a>
+    </div>
+</nav>
 
+<h1>Product List</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Image</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.description}"></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product.quantity}"></td>
+        <td>
+            <img th:src="${product.images != null ? '/product/image/'+ product.id : '' }" alt="Product Image">
+        </td>
+        <td>
+            <!-- Add action buttons here -->
+        </td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

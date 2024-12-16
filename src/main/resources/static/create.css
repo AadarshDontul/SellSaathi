@@ -1,0 +1,169 @@
+/* Global Reset and Base Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #121212; /* Deep dark background */
+    color: #e0e0e0;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+    overflow-y: auto; /* Enable full page scrolling */
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    background-color: #1e1e1e; /* Slightly lighter dark background for container */
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Page Header */
+.page-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.page-header h1 {
+    color: #ffffff;
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.04em;
+}
+
+.page-header p {
+    color: #a0a0a0;
+    font-size: 1rem;
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #c0c0c0;
+}
+
+/* Input Styles */
+.form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #333;
+    border-radius: 8px;
+    background-color: #2a2a2a;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+/* Textarea Specific */
+textarea.form-control {
+    min-height: 150px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+/* File Input Styling */
+.file-input {
+    position: relative;
+    overflow: hidden;
+}
+
+.file-input input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.file-input-label {
+    background-color: #2a2a2a;
+    border: 1px solid #333;
+    color: #a0a0a0;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    display: inline-block;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+.file-input:hover .file-input-label {
+    background-color: #333;
+}
+
+/* Submit Button */
+.btn-submit {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.btn-submit:hover {
+    background-color: #357abd;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 1.5rem;
+        margin: 0;
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .page-header h1 {
+        font-size: 1.75rem;
+    }
+}
+
+/* Scroll Bar Styling for Webkit Browsers */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #f8f8ff;
+    border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #357abd;
+}
