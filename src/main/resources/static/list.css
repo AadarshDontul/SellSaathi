@@ -8,7 +8,7 @@
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: #121212; /* Deep dark background */
-    color: #e0e0e0;
+    color: #ffffff;
     line-height: 1.6;
     min-height: 100vh;
     padding: 2rem 1rem;
@@ -32,7 +32,7 @@ body {
 }
 
 .navbar-brand .logo {
-    font-size: 2rem;
+    font-size: 2.8rem;
     font-weight: 800;
     color: #4a90e2;
     letter-spacing: -0.04em;
@@ -98,14 +98,41 @@ th, td {
 th {
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 0.875rem;
-    color: #a0a0a0;
+    font-size: 1rem;
+    color: #ffffff;
 }
 
-tr:last-child td {
-    border-bottom: none;
+.action-links {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
 }
 
+.action-links a {
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.edit-link {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.edit-link:hover {
+    background-color: #45a049;
+}
+
+.delete-link {
+    background-color: #f44336;
+    color: white;
+}
+
+.delete-link:hover {
+    background-color: #d32f2f;
+}
 tr:hover {
     background-color: rgba(74, 144, 226, 0.1);
     transition: background-color 0.3s ease;

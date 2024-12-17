@@ -42,8 +42,10 @@
             <img th:src="${product.images != null ? '/products/image/'+ product.id : '' }" alt="Product Image">
         </td>
         <td>
-            <a th:href="">Edit</a>
-            <a th:href="@{/products/delete/{id}(id=${product.id})}">Delete</a>
+            <div class="action-links">
+                <a th:href="@{/products/edit/{id}(id=${product.id})}" class="edit-link">Edit</a>
+                <a th:href="@{/products/delete/{id}(id=${product.id})}" class="delete-link">Delete</a>
+            </div>
         </td>
     </tr>
     </tbody>

@@ -55,8 +55,8 @@ public class ProductController {
         return "redirect:/products";
     }
 
-    @GetMapping("/edit/{id}")
-    public String editProduct(
+    @GetMapping("/edit/{id}") //Rendering the Edit Product Web page and, we pass Product object for current ID in model attribute
+    public String editProductForm(
             @PathVariable Long id,
             Model model){
         Products products = productService.findById(id);
@@ -64,6 +64,37 @@ public class ProductController {
         return "product/edit";
     }
 
+    @PostMapping("/edit/{id}")
+    public String editProduct(
+            @ModelAttribute Products product,
+            @PathVariable Long id,
+            @RequestParam("file") MultipartFile file
+    ) throws IOException {
+        Products existingProduct = productService.findById(id);
+
+        existingProduct.setName(product.getName());
+        existingProduct.setDescription(product.getDescription());
+        existingProduct.setPrice(product.getPrice());
+        existingProduct.setCategory(product.getCategory());
+        existingProduct.setQuantity(product.getQuantity());
+
+        if(!file.isEmpty()){
+            existingProduct.setImages(file.getBytes());
+        }
+
+        productService.save(existingProduct);
+        return "redirect:/products";
+    }
+
+
 
 
 }
+
+
+
+
+
+
+
+
