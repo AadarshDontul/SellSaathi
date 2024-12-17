@@ -33,16 +33,17 @@
     </thead>
     <tbody>
     <tr th:each="product : ${products}">
-        <td th:text="${product.id}"></td>
+
         <td th:text="${product.name}"></td>
         <td th:text="${product.description}"></td>
         <td th:text="${product.price}"></td>
         <td th:text="${product.quantity}"></td>
         <td>
-            <img th:src="${product.images != null ? '/product/image/'+ product.id : '' }" alt="Product Image">
+            <img th:src="${product.images != null ? '/products/image/'+ product.id : '' }" alt="Product Image">
         </td>
         <td>
-            <!-- Add action buttons here -->
+            <a th:href="">Edit</a>
+            <a th:href="@{/products/delete/{id}(id=${product.id})}">Delete</a>
         </td>
     </tr>
     </tbody>

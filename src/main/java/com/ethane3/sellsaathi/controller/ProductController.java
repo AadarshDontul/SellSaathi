@@ -5,9 +5,10 @@ import com.ethane3.sellsaathi.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/products")
@@ -23,9 +24,44 @@ public class ProductController {
     }
 
     @GetMapping("/create")
-    public String createProduct(Model model) {
+    public String createProductForm(Model model) {
         model.addAttribute("newProduct", new Products()); //binding Products Entity object in view template
         return "product/create"; // Make sure this path matches the file location
+    }
+
+    @PostMapping("/create") // To pass product object and add to Database
+    public String createProduct(
+            @ModelAttribute Products product,
+            @RequestParam("file") MultipartFile file) throws IOException {
+        if(!file.isEmpty()){
+            byte[] imageBytes = file.getBytes();
+            product.setImages(imageBytes);
+
+        }
+        productService.save(product);
+        return "redirect:/products";
+    }
+
+    @GetMapping("/image/{id}") // To show Images on List Webpage
+    @ResponseBody
+    public byte[] getImage(@PathVariable Long id){
+        Products product = productService.findById(id);
+        return product.getImages();
+    }
+
+    @GetMapping("/delete/{id}") // To delete the Product from List Webpage
+    public String deleteProduct(@PathVariable Long id){
+        productService.delete(id);
+        return "redirect:/products";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editProduct(
+            @PathVariable Long id,
+            Model model){
+        Products products = productService.findById(id);
+        model.addAttribute("editProduct", products);
+        return "product/edit";
     }
 
 

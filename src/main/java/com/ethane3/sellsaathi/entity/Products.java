@@ -17,7 +17,7 @@ public class Products {
     private String category;
     private Double price;
     private Long quantity;
-    @Lob
+    @Column(name = "images", columnDefinition="bytea")
     private byte[] images;
 
 
