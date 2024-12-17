@@ -1,26 +1,26 @@
 package com.ethane3.sellsaathi.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import java.util.Arrays;
+
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 public class Products {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String description;
     private String category;
     private Double price;
     private Long quantity;
+
     @Column(name = "images", columnDefinition="bytea")
     private byte[] images;
 
-
+    @ManyToOne
+    private User user;
 
     public Long getId() {
         return id;
@@ -30,20 +30,20 @@ public class Products {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCategory() {
@@ -76,5 +76,27 @@ public class Products {
 
     public void setImages(byte[] images) {
         this.images = images;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Products{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", category='" + category + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", images=" + Arrays.toString(images) +
+                ", user=" + user +
+                '}';
     }
 }
